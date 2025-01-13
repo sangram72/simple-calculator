@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [op, setOp] = useState();
+  const [op, setOp] = useState("+");
   const [fstNumber, setFstNumber] = useState(); 
   const [secNumber, setSecNumber] = useState(); 
     const [result, setResult] = useState(null);
@@ -53,7 +53,18 @@ function App() {
   return (
     <div>
       <label>Choose an operator: </label>
-      <input type="text" onChange={handleChange} value={op} />
+   
+      <select onChange={handleChange}>
+
+       <option value="+">+</option>
+
+       <option value="-">-</option>
+
+       <option value="*">*</option>
+
+       <option value="/">/</option>
+
+     </select>
 
       <label>Enter first number: </label>
       <input type="number" onChange={handleFstNumberChange} value={fstNumber} />
