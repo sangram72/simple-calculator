@@ -27,11 +27,11 @@ body {
 /* Calculator Styling */
 .calculator {
   background: rgba(255, 255, 255, 0.2);
-  padding: 20px;
+  padding: 30px;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
-  width: 350px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,21 +49,22 @@ h1 {
 .screen {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 15px;
+  padding: 20px;
   border-radius: 12px;
   width: 100%;
-  font-size: 24px;
+  font-size: 28px;
   color: #fff;
   text-align: right;
   margin-bottom: 20px;
   box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.2);
+  height: 60px;
 }
 
 /* Buttons Layout */
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
   width: 100%;
 }
 
@@ -72,9 +73,9 @@ button {
   background: linear-gradient(135deg, #00c6ff, #0072ff);
   color: #fff;
   border: none;
-  padding: 15px;
+  padding: 18px;
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -111,6 +112,7 @@ button.equal:hover {
 @media (max-width: 480px) {
   .calculator {
     width: 90%;
+    padding: 20px;
   }
 
   h1 {
@@ -118,11 +120,16 @@ button.equal:hover {
   }
 
   .screen {
-    font-size: 20px;
+    font-size: 24px;
+    height: 50px;
   }
 
   button {
     font-size: 16px;
-    padding: 12px;
+    padding: 14px;
+  }
+
+  .buttons {
+    gap: 8px;
   }
 }
