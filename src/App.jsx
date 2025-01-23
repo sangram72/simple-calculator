@@ -1,91 +1,51 @@
 import { useState } from 'react';
-import './App.css'; // Importing a separate CSS file for styles
+import './App.css';
 
 function App() {
-  const [op, setOp] = useState("+");
-  const [fstNumber, setFstNumber] = useState(); 
-  const [secNumber, setSecNumber] = useState(); 
+  const [screenValue, setScreenValue] = useState('');
   const [result, setResult] = useState(null);
 
-  function handleChange(e) {
-    setOp(e.target.value); 
-  }
-
-  function handleFstNumberChange(e) {
-    setFstNumber(Number(e.target.value));  
-  }
-
-  function handleSecNumberChange(e) {
-    setSecNumber(Number(e.target.value));  
-  }
-
-  function operation() {
-    if (isNaN(fstNumber) || isNaN(secNumber)) {
-      alert("Please enter valid numbers");
-      return;
+  const handleClick = (value) => {
+    if (value === 'C') {
+      setScreenValue('');
+      setResult(null);
+    } else if (value === '=') {
+      try {
+        setResult(eval(screenValue)); // Use with caution in production
+      } catch {
+        alert('Invalid Input');
+      }
+    } else {
+      setScreenValue((prev) => prev + value);
     }
-
-    switch (op) {
-      case "+":
-        setResult(fstNumber + secNumber);
-        break;
-      case "-":
-        setResult(fstNumber - secNumber);
-        break;
-      case "*":
-        setResult(fstNumber * secNumber);
-        break;
-      case "/":
-        if (secNumber === 0) {
-          alert("Cannot divide by zero");
-          setResult(null);
-        } else {
-          setResult(fstNumber / secNumber);
-        }
-        break;
-      default:
-        alert("Invalid operator");
-    }
-  }
+  };
 
   return (
     <div className="container">
       <div className="calculator">
-        <h1>Simple Calculator</h1>
-
-        <div className="input-group">
-          <label>Choose an operator: </label>
-          <select onChange={handleChange} value={op}>
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-          </select>
+        <h1>Calculator</h1>
+        <div className="screen">
+          {result !== null ? result : screenValue || '0'}
         </div>
-
-        <div className="input-group">
-          <label>Enter first number: </label>
-          <input 
-            type="number" 
-            onChange={handleFstNumberChange} 
-            value={fstNumber} 
-            placeholder="Enter number"
-          />
+        <div className="buttons">
+          <button onClick={() => handleClick('7')}>7</button>
+          <button onClick={() => handleClick('8')}>8</button>
+          <button onClick={() => handleClick('9')}>9</button>
+          <button className="operator" onClick={() => handleClick('/')}>/</button>
+          <button onClick={() => handleClick('4')}>4</button>
+          <button onClick={() => handleClick('5')}>5</button>
+          <button onClick={() => handleClick('6')}>6</button>
+          <button className="operator" onClick={() => handleClick('*')}>*</button>
+          <button onClick={() => handleClick('1')}>1</button>
+          <button onClick={() => handleClick('2')}>2</button>
+          <button onClick={() => handleClick('3')}>3</button>
+          <button className="operator" onClick={() => handleClick('-')}>-</button>
+          <button onClick={() => handleClick('0')}>0</button>
+          <button onClick={() => handleClick('.')}>.</button>
+          <button onClick={() => handleClick('C')} className="clear">C</button>
+          <button className="operator" onClick={() => handleClick('+')}>+</button>
+          <button className="operator" onClick={() => handleClick('=')}>=</button>
         </div>
-
-        <div className="input-group">
-          <label>Enter second number: </label>
-          <input 
-            type="number" 
-            onChange={handleSecNumberChange} 
-            value={secNumber} 
-            placeholder="Enter number"
-          />
-        </div>
-
-        <button onClick={operation} className="calculate-btn">Calculate</button>
-
-        {result !== null && <h2 className="result">Result: {result}</h2>}
       </div>
     </div>
   );
