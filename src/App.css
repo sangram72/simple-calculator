@@ -13,6 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* Main Container */
@@ -22,6 +23,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
+  padding: 20px;
 }
 
 /* Calculator Styling */
@@ -36,6 +38,7 @@ body {
   flex-direction: column;
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 100%;
 }
 
 h1 {
@@ -43,13 +46,14 @@ h1 {
   color: #ffffff;
   margin-bottom: 20px;
   text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 /* Calculator Screen */
 .screen {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 20px;
+  padding: 15px;
   border-radius: 12px;
   width: 100%;
   font-size: 28px;
@@ -58,6 +62,10 @@ h1 {
   margin-bottom: 20px;
   box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.2);
   height: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 /* Buttons Layout */
@@ -111,7 +119,7 @@ button.equal:hover {
 /* Responsive Design */
 @media (max-width: 480px) {
   .calculator {
-    width: 90%;
+    width: 100%;
     padding: 20px;
   }
 
@@ -120,7 +128,7 @@ button.equal:hover {
   }
 
   .screen {
-    font-size: 24px;
+    font-size: 20px;
     height: 50px;
   }
 
